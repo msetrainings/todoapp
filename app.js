@@ -2,24 +2,21 @@ const express = require("express")
 const request = require("request")
 const app = express()
 const port = 3000
-
+const date = require(__dirname + "/date.js")
 
 app.use(express.static("public"));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
 
+
+
 const newTasks = ["stand up the morning"] // initialisation tasks activities
 const newWorks = []
 
 app.get("/", (req, res) => {
-    const today = new Date()
-    const options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long"
-    }
-    const day = today.toLocaleDateString("en-US", options)
+    
+    const day = date.getDate();
     res.render("list", {listTitle: day, newListItems: newTasks})
 })
 
