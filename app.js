@@ -2,7 +2,7 @@ const express = require("express")
 const request = require("request")
 const app = express()
 const port = 3000
-const date = require(__dirname + "/date.js")
+const date = require(__dirname + "/modules/date.js")
 
 app.use(express.static("public"));
 app.use(express.json())
